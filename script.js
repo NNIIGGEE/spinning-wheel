@@ -1,40 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
     const wheel = document.querySelector(".wheel");
     const spinButton = document.getElementById("spin-button");
-    const sections = []; // Store user choices
-
+    
     // Function to retrieve user choices from the URL
     function getUserChoices() {
         const urlParams = new URLSearchParams(window.location.search);
+        const choices = [];
         for (const param of urlParams) {
             if (param[0] === "choice") {
-                sections.push(param[1]);
+                choices.push(param[1]);
             }
         }
+        return choices;
     }
-
-    // Function to create sections on the wheel based on user choices
-    function createSections() {
-        for (const choice of sections) {
+    
+    // Function to dynamically create sections based on user choices
+    function createSections(choices) {
+        for (const choice of choices) {
             const section = document.createElement("div");
             section.className = "wheel-section";
             section.textContent = choice;
             wheel.appendChild(section);
         }
     }
-
-    // Initialize user's custom choices and create sections
-    getUserChoices();
-    createSections();
-
+    
     // Function to spin the wheel
     function spinWheel() {
-        const totalDegrees = sections.length * (360 / sections.length);
-        // Modify the spinning wheel logic to use user's choices
-        // Use sections for the spinning wheel
         // Your spinning wheel logic here
     }
-
+    
+    // Initialize user's custom choices and create sections
+    const userChoices = getUserChoices();
+    createSections(userChoices);
+    
     // Event listener for the spin button
     spinButton.addEventListener("click", spinWheel);
 });
