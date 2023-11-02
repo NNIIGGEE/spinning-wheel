@@ -16,6 +16,19 @@
     animation: spin 4s linear infinite;
 }
 
+.wheel-section {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    background-color: #3498db;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 100% 50%;
+    transform: translateX(-50%) rotate(0deg);
+}
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -24,5 +37,3 @@
         transform: rotate(360deg);
     }
 }
-
-/* Additional styling for sections goes here */
